@@ -69,4 +69,6 @@ dependencies {
     implementation(libs.androidx.junit.ktx)
 
     ksp(libs.hilt.compiler)
+
+    testImplementation("junit:junit:4.13.2")
 }
