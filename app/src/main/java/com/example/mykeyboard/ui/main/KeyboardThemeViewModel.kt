@@ -8,32 +8,29 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 import androidx.lifecycle.ViewModel
 import com.example.mykeyboard.data.repository.KeyboardThemeRepository
-import com.example.mykeyboard.data.service.AdManager
 import com.example.mykeyboard.domain.model.KeyboardTheme
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 
 @HiltViewModel
-class KeyboardThemeViewModel @Inject constructor(
-    repository: KeyboardThemeRepository,
-    private val adManager: AdManager
-) : ViewModel() {
+class KeyboardThemeViewModel @Inject constructor(repository: KeyboardThemeRepository) :
+    ViewModel() {
 
     val themes: SnapshotStateMap<Int, KeyboardTheme> =
         repository.getAll().map { it.id to it }.toMutableStateMap()
-
     val keyboardIconSize = mutableStateOf(IntSize.Companion.Zero)
     var selectedTheme = mutableStateOf(themes.values.first())
     var isDialogShown = mutableStateOf(false)
     var isDialogLocked = mutableStateOf(true)
     var isCloseButtonShown = mutableStateOf(false)
 
+
     fun getThemes(): List<KeyboardTheme> {
         return themes.values.toList()
     }
 
     fun showLockedDialog() {
-        hideCloseButon()
+        hideCloseButton()
         isDialogLocked.value = true
         isDialogShown.value = true
     }
@@ -49,11 +46,11 @@ class KeyboardThemeViewModel @Inject constructor(
         isDialogShown.value = false
     }
 
-    fun showCloseButon() {
+    fun showCloseButton() {
         isCloseButtonShown.value = true
     }
 
-    fun hideCloseButon() {
+    fun hideCloseButton() {
         isCloseButtonShown.value = false
     }
 
@@ -76,13 +73,5 @@ class KeyboardThemeViewModel @Inject constructor(
     fun unlockTheme() {
         val unlockedTheme = selectedTheme.value.copy(isLocked = false)
         themes[unlockedTheme.id] = unlockedTheme
-    }
-
-    fun getBottomAdImageRes(): Int {
-        return adManager.getBottomAdRes()
-    }
-
-    fun getBeautifulAdImageRes(): Int {
-        return adManager.getBeautifulAdRes()
     }
 }

@@ -1,4 +1,4 @@
-package com.example.mykeyboard.ui
+package com.example.mykeyboard.ui.ad
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -9,11 +9,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import com.example.mykeyboard.ui.main.KeyboardThemeViewModel
 import kotlinx.coroutines.delay
 
 @Composable
-fun AdScreen(onTimeout: () -> Unit, viewModel: KeyboardThemeViewModel) {
+fun AdScreen(onTimeout: () -> Unit, viewModel: AdViewModel) {
 
     LaunchedEffect(Unit) {
         delay(5000)
@@ -31,4 +30,5 @@ fun AdScreen(onTimeout: () -> Unit, viewModel: KeyboardThemeViewModel) {
             modifier = Modifier.fillMaxSize()
         )
     }
+
 }

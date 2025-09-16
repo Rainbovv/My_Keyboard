@@ -42,7 +42,7 @@ fun MainScreen(
         .build()
 
     Scaffold(
-        bottomBar = { BottomBar(viewModel) }) { innerPadding ->
+        bottomBar = { BottomBar() }) { innerPadding ->
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             modifier = Modifier

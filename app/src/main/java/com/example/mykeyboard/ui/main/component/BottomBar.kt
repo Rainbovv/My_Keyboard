@@ -14,11 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.mykeyboard.ui.main.KeyboardThemeViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.example.mykeyboard.ui.ad.AdViewModel
 import com.example.mykeyboard.ui.theme.BarBackgroundColor
 
 @Composable
-fun BottomBar(viewModel: KeyboardThemeViewModel) {
+fun BottomBar(viewModel: AdViewModel = hiltViewModel()) {
     BottomAppBar(
         containerColor = BarBackgroundColor,
         contentPadding = PaddingValues(),
@@ -39,7 +40,5 @@ fun BottomBar(viewModel: KeyboardThemeViewModel) {
                     .padding(end = 20.dp, start = 20.dp, top = 3.dp, bottom = 3.dp)
             )
         }
-
-
     }
 }
