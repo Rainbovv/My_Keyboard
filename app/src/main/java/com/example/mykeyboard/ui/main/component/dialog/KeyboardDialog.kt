@@ -1,4 +1,4 @@
-package com.example.mykeyboard.ui.main.component.unlock
+package com.example.mykeyboard.ui.main.component.dialog
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
@@ -41,7 +41,7 @@ fun KeyboardDialog(
 
     LaunchedEffect(Unit) {
         delay(5000)
-        viewModel.showCloseButon()
+        viewModel.showCloseButton()
     }
 
     Dialog(

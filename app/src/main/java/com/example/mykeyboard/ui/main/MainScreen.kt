@@ -25,7 +25,7 @@ import com.example.mykeyboard.ui.main.component.BottomBar
 import com.example.mykeyboard.ui.main.component.keyboard.LockedKeyboardBox
 import com.example.mykeyboard.ui.main.component.keyboard.UnlockedKeyboardBox
 import com.example.mykeyboard.ui.main.component.topbar.KeyboardTopBar
-import com.example.mykeyboard.ui.main.component.unlock.KeyboardDialog
+import com.example.mykeyboard.ui.main.component.dialog.KeyboardDialog
 import com.example.mykeyboard.ui.theme.ContentBackgroundColor
 import com.example.mykeyboard.ui.theme.GradientBorderStroke
 import com.example.mykeyboard.ui.theme.RoundCornerDp

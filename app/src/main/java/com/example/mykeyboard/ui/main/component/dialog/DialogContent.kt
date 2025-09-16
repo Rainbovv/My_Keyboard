@@ -1,4 +1,4 @@
-package com.example.mykeyboard.ui.main.component.unlock
+package com.example.mykeyboard.ui.main.component.dialog
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border

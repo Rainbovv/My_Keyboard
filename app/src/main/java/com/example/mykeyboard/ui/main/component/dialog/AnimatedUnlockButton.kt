@@ -1,4 +1,4 @@
-package com.example.mykeyboard.ui.main.component.unlock
+package com.example.mykeyboard.ui.main.component.dialog
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
