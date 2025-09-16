@@ -45,7 +45,7 @@ fun KeyboardDialog(
     }
 
     Dialog(
-        onDismissRequest = { if (viewModel.isCloseButtonShown.value) viewModel.hideDialog() },
+        onDismissRequest = { if (viewModel.isCloseButtonShown()) viewModel.hideDialog() },
         properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
         Box(

@@ -63,12 +63,11 @@ dependencies {
 
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     implementation(libs.coil.compose)
     implementation(libs.coil.svg)
-    implementation(libs.androidx.junit.ktx)
 
-    ksp(libs.hilt.compiler)
-
-    testImplementation("junit:junit:4.13.2")
+    //test dependencies
+    testImplementation(libs.junit)
 }

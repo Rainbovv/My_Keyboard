@@ -14,9 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.ImageLoader
@@ -31,6 +33,9 @@ fun DialogContent(
     imageLoader: ImageLoader,
     viewModel: KeyboardThemeViewModel
 ) {
+    val fontScale = LocalDensity.current.fontScale
+    val dynamicSize = 20 / fontScale.coerceAtLeast(1f)
+
     Column(
         modifier = Modifier.padding(top = 15.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -39,7 +44,7 @@ fun DialogContent(
             Modifier
                 .padding(top = 30.dp, start = 20.dp, end = 20.dp)
                 .clip(RoundedCornerShape(RoundCornerDp))
-                .aspectRatio(1.8f)
+                .aspectRatio(2.0f)
                 .border(
                     width = 2.dp,
                     color = DialogKeyboardBorder,
@@ -56,23 +61,25 @@ fun DialogContent(
         if (viewModel.isDialogLocked.value) {
             Text(
                 text = "Watch the ad and get this keyboard",
-                fontSize = 18.sp,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(top = 20.dp)
+                modifier = Modifier.padding(top = dynamicSize.dp),
+                overflow = TextOverflow.Clip,
+                maxLines = 1
             )
             Text(
                 text = "FOR FREE",
                 color = ForFreeColor,
-                fontSize = 23.sp,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 20.dp)
+                modifier = Modifier.padding(bottom = (dynamicSize.dp), top = dynamicSize.dp),
             )
-
-            AnimatedUnlockButton(onClick = { viewModel.hideDialog(); onUnlock() }, imageLoader)
-        }
-        else {
+            AnimatedUnlockButton(
+                onClick = { viewModel.hideDialog(); onUnlock() },
+                imageLoader,
+                dynamicSize
+            )
+        } else {
             Text(
                 text = "Keyboard Unlocked",
                 color = ForFreeColor,

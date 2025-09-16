@@ -25,6 +25,10 @@ class KeyboardThemeViewModel @Inject constructor(repository: KeyboardThemeReposi
     var isCloseButtonShown = mutableStateOf(false)
 
 
+    fun isCloseButtonShown(): Boolean {
+        return isCloseButtonShown.value
+    }
+
     fun getThemes(): List<KeyboardTheme> {
         return themes.values.toList()
     }

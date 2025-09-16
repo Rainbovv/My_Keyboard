@@ -5,7 +5,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -35,7 +34,11 @@ import com.example.mykeyboard.ui.theme.UnlockButtonBackgroundColor
 import com.example.mykeyboard.ui.theme.getGradientColorArray
 
 @Composable
-fun AnimatedUnlockButton(onClick: () -> Unit, imageLoader: ImageLoader) {
+fun AnimatedUnlockButton(
+    onClick: () -> Unit,
+    imageLoader: ImageLoader,
+    dynamicSize: Float
+) {
     val scale = remember { Animatable(1f) }
 
     LaunchedEffect(Unit) {
@@ -63,8 +66,7 @@ fun AnimatedUnlockButton(onClick: () -> Unit, imageLoader: ImageLoader) {
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.height(50.dp)
+            modifier = Modifier.height(50.dp),
         ) {
             Image(
                 painter = rememberAsyncImagePainter(
@@ -79,7 +81,7 @@ fun AnimatedUnlockButton(onClick: () -> Unit, imageLoader: ImageLoader) {
             Text(
                 "Unlock for free",
                 color = Color.White,
-                fontSize = 20.sp,
+                fontSize = dynamicSize.sp,
                 fontWeight = FontWeight.Bold
             )
         }

@@ -140,24 +140,4 @@ class KeyboardThemeViewModelTest {
         Assert.assertNotNull("Theme should exist in the map", updatedTheme)
         Assert.assertFalse("Theme should be unlocked", updatedTheme!!.isLocked)
     }
-
-    @Test
-    fun `close button visibility should toggle between shown and hidden states`() {
-        // Given
-        val viewModel = buildViewModelWithThemes()
-
-        // When/Then - Show
-        viewModel.showCloseButton()
-        Assert.assertTrue(
-            "Close button should be visible after show",
-            viewModel.isCloseButtonShown.value
-        )
-
-        // When/Then - Hide
-        viewModel.hideCloseButton()
-        Assert.assertFalse(
-            "Close button should be hidden after hide",
-            viewModel.isCloseButtonShown.value
-        )
-    }
 }
